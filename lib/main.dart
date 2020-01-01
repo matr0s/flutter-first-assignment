@@ -17,6 +17,18 @@ class MyOwnApp extends StatefulWidget {
 }
 
 class _MyOwnApp extends State<MyOwnApp> {
+  final textOptions = ['First label', 'Second label', 'Third label'];
+  String textOption = 'Here is the default text';
+  int clickCounter = 0;
+
+  void textHandler() {
+    setState(() {
+      textOption = textOptions[clickCounter];
+    });
+    clickCounter += 1;
+    print('Clicked');
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,8 +36,21 @@ class _MyOwnApp extends State<MyOwnApp> {
       appBar: AppBar(
         title: Text('My first Own App'),
       ),
-      body: RaisedButton(
-        onPressed: null,
+      body: Container(
+        width: double.infinity,
+        child: Column(
+          children: <Widget>[
+            Text(textOption,
+                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center),
+            RaisedButton(
+              color: Colors.blue,
+              textColor: Colors.white,
+              child: Text('Click on Me'),
+              onPressed: textHandler,
+            ),
+          ],
+        ),
       ),
     ));
   }
