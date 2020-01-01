@@ -5,6 +5,8 @@
 
 import 'package:flutter/material.dart';
 
+import './textcontrol.dart';
+
 void main() {
   runApp(MyOwnApp());
 }
@@ -17,15 +19,15 @@ class MyOwnApp extends StatefulWidget {
 }
 
 class _MyOwnApp extends State<MyOwnApp> {
-  final textOptions = ['First label', 'Second label', 'Third label'];
-  String textOption = 'Here is the default text';
-  int clickCounter = 0;
+  final _textOptions = ['First label', 'Second label', 'Third label'];
+  String _textOption = 'Here is the default text';
+  int _clickCounter = 0;
 
   void textHandler() {
     setState(() {
-      textOption = textOptions[clickCounter];
+      _textOption = _textOptions[_clickCounter];
     });
-    clickCounter += 1;
+    _clickCounter += 1;
     print('Clicked');
   }
 
@@ -40,15 +42,10 @@ class _MyOwnApp extends State<MyOwnApp> {
         width: double.infinity,
         child: Column(
           children: <Widget>[
-            Text(textOption,
+            Text(_textOption,
                 style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center),
-            RaisedButton(
-              color: Colors.blue,
-              textColor: Colors.white,
-              child: Text('Click on Me'),
-              onPressed: textHandler,
-            ),
+            TextControl(_textOptions, _clickCounter)
           ],
         ),
       ),
