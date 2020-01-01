@@ -21,7 +21,12 @@ class _MyOwnApp extends State<MyOwnApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(title: Text('My first Own App')),
+      appBar: AppBar(
+        title: Text('My first Own App'),
+      ),
+      body: RaisedButton(
+        onPressed: null,
+      ),
     ));
   }
 }
