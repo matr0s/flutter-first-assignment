@@ -5,42 +5,22 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:flutter_course/contolText.dart';
+
 void main() {
   runApp(MyOwnApp());
 }
 
-class MyOwnApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _MyOwnApp();
-  }
-}
-
-class _MyOwnApp extends State<MyOwnApp> {
-  String _textCondent = 'Default text';
-
+class MyOwnApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        title: Text('My first Own App v2'),
-      ),
-      body: Container(
-        width: double.infinity,
-        child: Column(
-          children: <Widget>[
-            Text(_textCondent),
-            RaisedButton(
-                child: Text('Push Me'),
-                onPressed: () {
-                  setState(() {
-                    _textCondent = 'Updated';
-                  });
-                }),
-          ],
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('My first Own App v2'),
         ),
+        body: Controltext(),
       ),
-    ));
+    );
   }
 }
