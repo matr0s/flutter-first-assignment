@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart';
 
 import './textcontrol.dart';
+import './textmanager.dart';
 
 void main() {
   runApp(MyOwnApp());
@@ -19,9 +20,9 @@ class MyOwnApp extends StatefulWidget {
 }
 
 class _MyOwnApp extends State<MyOwnApp> {
-  final _textOptions = ['First label', 'Second label', 'Third label'];
+  List _textOptions = ['First label', 'Second label', 'Third label'];
   String _textOption = 'Here is the default text';
-  int _clickCounter = 0;
+ int _clickCounter = 0;
 
   void textHandler() {
     setState(() {
@@ -42,10 +43,8 @@ class _MyOwnApp extends State<MyOwnApp> {
         width: double.infinity,
         child: Column(
           children: <Widget>[
-            Text(_textOption,
-                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center),
-            TextControl(_textOptions, _clickCounter)
+            TextManager(_textOption, _textOptions),
+            TextControl(_textOptions, textHandler, _clickCounter),
           ],
         ),
       ),
