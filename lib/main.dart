@@ -5,9 +5,6 @@
 
 import 'package:flutter/material.dart';
 
-import './textcontrol.dart';
-import './textmanager.dart';
-
 void main() {
   runApp(MyOwnApp());
 }
@@ -20,31 +17,27 @@ class MyOwnApp extends StatefulWidget {
 }
 
 class _MyOwnApp extends State<MyOwnApp> {
-  List _textOptions = ['First label', 'Second label', 'Third label'];
-  String _textOption = 'Here is the default text';
- int _clickCounter = 0;
-
-  void textHandler() {
-    setState(() {
-      _textOption = _textOptions[_clickCounter];
-    });
-    _clickCounter += 1;
-    print('Clicked');
-  }
+  String _textCondent = 'Default text';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
-        title: Text('My first Own App'),
+        title: Text('My first Own App v2'),
       ),
       body: Container(
         width: double.infinity,
         child: Column(
           children: <Widget>[
-            TextManager(_textOption, _textOptions),
-            TextControl(_textOptions, textHandler, _clickCounter),
+            Text(_textCondent),
+            RaisedButton(
+                child: Text('Push Me'),
+                onPressed: () {
+                  setState(() {
+                    _textCondent = 'Updated';
+                  });
+                }),
           ],
         ),
       ),
